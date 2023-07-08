@@ -23,3 +23,9 @@ body {
     font-weight: bolder;
     text-align: center;
 }
+
+.sketch-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
