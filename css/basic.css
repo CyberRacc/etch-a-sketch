@@ -26,6 +26,35 @@ body {
 
 .sketch-area {
     display: flex;
-    align-items: center;
     justify-content: center;
+}
+
+.sketch-container {
+    display: flex;
+    flex: 1;
+}
+
+.sketch-board {
+    display: flex;
+    width: 80vw;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.grid-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.grid-block {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
 }
