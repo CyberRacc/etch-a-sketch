@@ -12,6 +12,11 @@ function createGrid() {
             gridBlock.classList.add("grid-block");
             gridRow.appendChild(gridBlock);
             gridContainer.appendChild(gridRow);
+
+            gridBlock.addEventListener("mouseover", function (e) {
+            console.log(e);
+            gridBlock.classList.add("hover-colour");
+});
         }
     }
 }

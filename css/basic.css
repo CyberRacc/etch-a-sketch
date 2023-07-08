@@ -58,3 +58,7 @@ body {
     height: 32px;
     margin: 0 auto;
 }
+
+.hover-colour {
+    background-color: purple;
+}
