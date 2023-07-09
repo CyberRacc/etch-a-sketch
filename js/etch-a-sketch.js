@@ -33,25 +33,25 @@ function createGrid(gridSize) {
             const gridBlock = document.createElement("div");
             gridBlock.classList.add("grid-block");
             gridRow.appendChild(gridBlock);
-            gridBlock.addEventListener("mouseover", function () {
+            gridBlock.addEventListener("mouseover", function (e) {
                 gridBlock.classList.add("hover-colour");
+                randomiseRGB(gridBlock);
             });
         }
     }
 }
 
-function randomiseRGB() {
-    let r = Math.random()
-    let g = Math.random()
-    let b = Math.random()
+function randomiseRGB(gridBlock) {
+    let r = Math.random();
+    let g = Math.random();
+    let b = Math.random();
 
-    r *= 255;
-    g *= 255;
-    b *= 255;
+    r = Math.floor(r * 255);
+    g = Math.floor(g * 255);
+    b = Math.floor(b * 255);
+    
+    gridBlock.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
-    console.log(`R = ${r}`)
-    console.log(`G = ${g}`)
-    console.log(`B = ${b}`)
 }
 
 // Listeners
