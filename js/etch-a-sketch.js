@@ -1,3 +1,4 @@
+// Variables
 const gridContainer = document.querySelector(".board-grid");
 const startButtonContainer = document.querySelector(".start-button-container");
 const startButton = document.querySelector(".start-button");
@@ -5,14 +6,14 @@ const startButton = document.querySelector(".start-button");
 // Functions
 function setGridSize() {
 
-    let gridSize = prompt("Grid size: ");
+    let gridSize = prompt("Enter grid size, 16 for 16x16 grid etc. max 100:");
 
     if (gridSize > 100) {
-        alert("ERROR: width/height must be smaller than 100.")
+        alert("ERROR: width/height must be smaller than 100")
     } else if (gridSize == null) {
         alert("Cancelled")  
-    } else if (isNaN(gridSize) || gridSize == "") {
-        alert("ERROR: Incorrect values");
+    } else if (isNaN(gridSize) || gridSize == "" || gridSize < 0) {
+        alert("ERROR: Incorrect value");
     } else {
         gridSize = Number(gridSize);
         createGrid(gridSize);
@@ -39,6 +40,29 @@ function createGrid(gridSize) {
     }
 }
 
+function randomiseRGB() {
+    let r = Math.random()
+    let g = Math.random()
+    let b = Math.random()
+
+    r *= 255;
+    g *= 255;
+    b *= 255;
+
+    console.log(`R = ${r}`)
+    console.log(`G = ${g}`)
+    console.log(`B = ${b}`)
+}
+
+// Listeners
 startButton.addEventListener("click", function (e) {
     setGridSize();
+});
+
+startButton.addEventListener("mouseover", function (e) {
+    startButton.classList.add("button-hover");
+});
+
+startButton.addEventListener("mouseout", function (e) {
+    startButton.classList.remove("button-hover");
 });
