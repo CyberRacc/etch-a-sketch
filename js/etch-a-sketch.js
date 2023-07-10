@@ -83,9 +83,10 @@ function randomiseHSL(gridBlock) {
     gridBlock.style.backgroundColor = `hsl(${h}, ${s}%, ${l - darkness}%)`;
 
     if (darkness < 100) {
-        gridBlock.dataset.darkness += 5;
+        darkness = Number(gridBlock.dataset.darkness) + 10;
+        gridBlock.dataset.darkness = darkness.toString();
     } else {
-        gridBlock.dataset.darkness = darkness;
+        gridBlock.dataset.darkness = darkness.toString();
     }
 }
 
