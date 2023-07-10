@@ -31,26 +31,35 @@ function createGrid(gridSize) {
     
         for(let j = 0; j < gridSize; j++) {
             const gridBlock = document.createElement("div");
+
             gridBlock.classList.add("grid-block");
+            gridBlock.dataset.darkness = 0;
             gridRow.appendChild(gridBlock);
             gridBlock.addEventListener("mouseover", function (e) {
                 gridBlock.classList.add("hover-colour");
-                randomiseRGB(gridBlock);
+                randomiseHSL(gridBlock);
             });
         }
     }
 }
 
-function randomiseRGB(gridBlock) {
-    let r = Math.random();
-    let g = Math.random();
-    let b = Math.random();
+function randomiseHSL(gridBlock) {
 
-    r = Math.floor(r * 255);
-    g = Math.floor(g * 255);
-    b = Math.floor(b * 255);
+    // Generates random values for HSL and applies it to .grid-block in CSS.
+
+    let h = Math.random();
+    let s = 50 + Math.random() * (100 - 50);
+    let l = 60;
+    let darkness = Number(gridBlock.dataset.darkness);
+
+    h = Math.floor(h * 360);
+    s = Math.floor(s);
+    l = Math.floor(l);
+
+    console.log(h, s, l);
     
-    gridBlock.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    gridBlock.style.backgroundColor = `hsl(${h}, ${s}%, ${l - darkness}%)`;
+    gridBlock.dataset.darkness += 5;
 
 }
 
