@@ -2,6 +2,9 @@
 const gridContainer = document.querySelector(".board-grid");
 const startButtonContainer = document.querySelector(".start-button-container");
 const startButton = document.querySelector(".start-button");
+const clearButtonContainer = document.createElement("div");
+const clearButton = document.createElement("button");
+const sketchContainer = document.querySelector(".sketch-container");
 
 // Functions
 function setGridSize() {
@@ -23,6 +26,27 @@ function setGridSize() {
 function createGrid(gridSize) {
 
     startButtonContainer.removeChild(startButton);
+    clearButton.textContent = "Clear";
+    clearButton.classList.add("start-button")
+
+    sketchContainer.appendChild(clearButtonContainer);
+    clearButtonContainer.appendChild(clearButton);
+
+    clearButton.addEventListener("mouseover", function (e) {
+        clearButton.classList.add("button-hover");
+    });
+    
+    clearButton.addEventListener("mouseout", function (e) {
+        clearButton.classList.remove("button-hover");
+    });
+
+    clearButton.addEventListener("click", function (e) {
+        const gridBlocks = document.querySelectorAll(".grid-block");
+        gridBlocks.forEach(function(block) {
+            block.style.backgroundColor = `hsl(360, 100%, 100%)`;
+            block.dataset.darkness = "0";
+        });
+    });
 
     for(let i = 0; i < gridSize; i++) {
         const gridRow = document.createElement("div");
@@ -55,12 +79,14 @@ function randomiseHSL(gridBlock) {
     h = Math.floor(h * 360);
     s = Math.floor(s);
     l = Math.floor(l);
-
-    console.log(h, s, l);
     
     gridBlock.style.backgroundColor = `hsl(${h}, ${s}%, ${l - darkness}%)`;
-    gridBlock.dataset.darkness += 5;
 
+    if (darkness < 100) {
+        gridBlock.dataset.darkness += 5;
+    } else {
+        gridBlock.dataset.darkness = darkness;
+    }
 }
 
 // Listeners

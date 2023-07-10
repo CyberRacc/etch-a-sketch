@@ -10,6 +10,8 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .title-container, .title {
@@ -87,6 +89,7 @@ body {
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     padding: 8px;
+    margin: 12px;
 }
 
 .button-hover {
